@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Details } from 'src/app/services/details';
 
 @Component({
   selector: 'app-card',
@@ -12,4 +13,8 @@ export class CardComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Input() title: string;
+  @Input() description: string;
+  @Input() selected: boolean;
+  @Input() editable: boolean;
 }

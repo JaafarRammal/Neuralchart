@@ -1,0 +1,30 @@
+[
+  {
+    "type": "Node type",
+    "description": "Node action",
+    "params": [
+      {
+        "title": "Some parameter",
+        "value": 0
+      },
+      {
+        "title": "Another parameter",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "type": "Another node type",
+    "description": "Node action",
+    "params": [
+      {
+        "title": "Some parameter",
+        "value": 0
+      },
+      {
+        "title": "Another parameter",
+        "value": 0
+      }
+    ]
+  }
+]

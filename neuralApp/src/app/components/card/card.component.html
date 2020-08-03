@@ -1,1 +1,4 @@
-<p>card works!</p>
+<div class="card" [ngStyle]="{'border-color': selected ? '#FF9019' : '#DDDDDD', 'border-width': selected ? '3px' : '1px'}">
+  <div class="card-title">{{title}}</div>
+  <div class="card-info">{{description}}</div>
+</div>
