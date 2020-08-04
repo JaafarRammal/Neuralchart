@@ -2,6 +2,8 @@
 const express = require('express')
 const generateScript = require('./scriptGeneration')
 const app = express()
+app.use(express.json())
+
 const port = 3000
 
 app.get('/', (req, res) => {
