@@ -109,7 +109,7 @@ export class AppComponent implements OnInit {
         selected: false
       }
       this.types[this.template]["params"].forEach(param => {
-        item.params.push({title: param["title"], value: 0})
+        item.params.push({title: param["title"], value: param["value"]})
       });
       this.tree.splice(i, 0, item)
       this.template = -1

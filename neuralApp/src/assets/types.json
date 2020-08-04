@@ -1,113 +1,70 @@
 [
   {
-    "type": "Node type",
-    "description": "Node action",
+    "type": "Flatten",
+    "description": "",
+    "params": []
+  },
+  {
+    "type": "Fully Connected",
+    "description": "",
     "params": [
       {
-        "title": "Some parameter",
-        "value": 0
+        "title": "Units",
+        "value": "0"
       },
       {
-        "title": "Another parameter",
-        "value": 0
+        "title": "Activation",
+        "value": "Active"
+      },
+      {
+        "title": "Use-bias",
+        "value": "True"
       }
     ]
   },
   {
-    "type": "Another node type",
-    "description": "Node action",
+    "type": "2D convolution",
+    "description": "",
     "params": [
       {
-        "title": "Some parameter",
-        "value": 0
+        "title": "Fitters",
+        "value": "0"
       },
       {
-        "title": "Another parameter",
-        "value": 0
+        "title": "Kernel_x",
+        "value": "0"
+      },
+      {
+        "title": "Kernel_y",
+        "value": "0"
+      },
+      {
+        "title": "Activation",
+        "value": "Active"
       }
     ]
   },
   {
-    "type": "Third type",
-    "description": "Node action",
+    "type": "2D Max pooling",
+    "description": "",
     "params": [
       {
-        "title": "Some parameter",
-        "value": 0
+        "title": "Pool_x",
+        "value": "0"
       },
       {
-        "title": "Another parameter",
-        "value": 0
+        "title": "Pool_y",
+        "value": "0"
       }
     ]
   },
   {
-    "type": "Fourth",
-    "description": "Node action",
+    "type": "Dropout",
+    "description": "",
     "params": [
       {
-        "title": "Some parameter",
-        "value": 0
-      },
-      {
-        "title": "Another parameter",
-        "value": 0
-      }
-    ]
-  },
-  {
-    "type": "Add as many types",
-    "description": "Node action",
-    "params": [
-      {
-        "title": "Some parameter",
-        "value": 0
-      },
-      {
-        "title": "Another parameter",
-        "value": 0
-      }
-    ]
-  },
-  {
-    "type": "From types.json",
-    "description": "Node action",
-    "params": [
-      {
-        "title": "Some parameter",
-        "value": 0
-      },
-      {
-        "title": "Another parameter",
-        "value": 0
-      }
-    ]
-  },
-  {
-    "type": "Cool!",
-    "description": "Node action",
-    "params": [
-      {
-        "title": "Some parameter",
-        "value": 0
-      },
-      {
-        "title": "Another parameter",
-        "value": 0
-      }
-    ]
-  },
-  {
-    "type": "Scrolls as well",
-    "description": "Node action",
-    "params": [
-      {
-        "title": "Some parameter",
-        "value": 0
-      },
-      {
-        "title": "Another parameter",
-        "value": 0
+        "title": "Dropout",
+        "value": "0.0"
       }
     ]
   }
