@@ -5,11 +5,7 @@ from string import Template
 class ScriptGenerator():
     def __init__(self, json_data, batch_size, epochs, data_path):
         self.data = json.loads(json_data)
-        
-        self.batch_size = batch_size
         self.layers_list = set()
-        self.epochs = epochs
-        self.data_path = data_path
         self.program = Template("""import keras
 from keras.models import Sequential
 import keras.losses 
@@ -17,13 +13,19 @@ from keras.layers import $layers_list
 from keras import backend as K
 import numpy as np
 
-def run_model():
+def parse_args():
+$parse_args
+
+def run_model(data_path, batch_size, epochs):
 $data_processing
 
 $model_creation
 $model_compilation
 
 $model_fitting
+
+batch_size, num_classes, epochs, data_path = parse_args()
+run_model(data_path, batch_size, epochs)
 """)
 
     def model_creation(self):
@@ -51,16 +53,18 @@ $model_fitting
         metrics=['accuracy'])""".format(loss=self.data["hyperparameters"]["loss"], optimiser=self.data["hyperparameters"]["optimiser"]), "    ")
 
     def load_csv(self):
-        load_csv = """dataset = np.loadtxt({data_path}, delimiter=\",\")
+        load_csv = """dataset = np.loadtxt(data_path, delimiter=\",\")
 x_data = dataset[:, :-1]
-y_data = dataset[:, -1]""".format(data_path=self.data_path)
+y_data = dataset[:, -1]"""
         return textwrap.indent(load_csv, "    ")
     
     def model_fitting(self):
-        return textwrap.indent("history=model.fit(x_data, y_data, batch_size={batch_size}, nb_epoch={epochs}, validation_split = 0.2, verbose=1)".format(
-            batch_size=self.batch_size, epochs=self.epochs
-        ), "    ")
+        return textwrap.indent("history=model.fit(x_data, y_data, batch_size=batch_size, nb_epoch=epochs, validation_split = 0.2, verbose=1)", "    ")
     
+    def parse_args(self):
+        return textwrap.indent("""FUNCTION
+        """, "    ")
+
     def generate(self):
         model = self.model_creation()
         return self.program.substitute(
