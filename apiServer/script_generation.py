@@ -8,12 +8,12 @@ class ScriptGenerator():
         self.layers_list = set()
         self.program = Template("""import keras
 from keras.models import Sequential
-import keras.losses 
+import keras.losses
 from keras.layers import $layers_list
 from keras import backend as K
 import numpy as np
+import argparse
 
-def parse_args():
 $parse_args
 
 def run_model(data_path, batch_size, epochs):
@@ -24,7 +24,6 @@ $model_compilation
 
 $model_fitting
 
-batch_size, num_classes, epochs, data_path = parse_args()
 run_model(data_path, batch_size, epochs)
 """)
 
@@ -62,8 +61,18 @@ y_data = dataset[:, -1]"""
         return textwrap.indent("history=model.fit(x_data, y_data, batch_size=batch_size, nb_epoch=epochs, validation_split = 0.2, verbose=1)", "    ")
     
     def parse_args(self):
-        return textwrap.indent("""FUNCTION
-        """, "    ")
+        return """
+parser = argparse.ArgumentParser(description="Training script")
+parser.add_argument("--batch_size", default=128, type=int)
+parser.add_argument("--num_classes", default=10, type=int)
+parser.add_argument("--epochs", default=12, type=int)
+parser.add_argument("--data", type=str, required=True)
+
+args = parser.parse_args()
+
+batch_size, num_classes, epochs, data_path =
+  (args.batch_size, args.num_classes, args.epochs, args.data)
+"""
 
     def generate(self):
         model = self.model_creation()
