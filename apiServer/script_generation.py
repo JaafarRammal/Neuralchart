@@ -3,7 +3,7 @@ import textwrap
 from string import Template
 
 class ScriptGenerator():
-    def __init__(self, json_data, batch_size, epochs, data_path):
+    def __init__(self, json_data):
         self.data = json.loads(json_data)
         self.layers_list = set()
         self.program = Template("""import keras
@@ -36,11 +36,26 @@ run_model(data_path, batch_size, epochs)
                 model_creation += "Flatten()"
                 self.layers_list.add("Flatten")
             elif node['type'] == "Fully Connected Layer":
-                assert len(node['params']) == 3
-                model_creation += "Dense({units}, activation=\"{activation}\", use_bias={use_bias}".format(
+                model_creation += "Dense({units}, activation=\"{activation}\", use_bias={use_bias})".format(
                     units=node['params']['units'], activation=node['params']['activation'], use_bias=node['params']['use_bias']
                 )
                 self.layers_list.add("Dense")
+            elif node['type'] == "2D Convolution":
+                model_creation += "Conv2D({filters}, ({kernel_x}, {kernel_y}), activation=\"{activation}\")".format(
+                    filters=node['params']['filters'], activation=node['params']['activation'], 
+                    kernel_x=node['params']['kernel_x'], kernel_y=node['params']['kernel_y']
+                )
+                self.layers_list.add("Conv2D")
+            elif node['type'] == "2D Max Pooling":
+                model_creation += "MaxPooling2D(pool_size=({pool_x}, {pool_u}))".format(
+                    pool_x=node['params']['pool_x'], pool_y=node['params']['pool_y']
+                )
+                self.layers_list.add("MaxPooling2D")
+            elif node['type'] == "Dropout":
+                model_creation += "Dropout({dropout})".format(
+                    pool_x=node['params']['dropout']
+                )
+                self.layers_list.add("Dropout")
 
             model_creation += ")\n"
         
@@ -78,5 +93,5 @@ batch_size, num_classes, epochs, data_path =
         model = self.model_creation()
         return self.program.substitute(
             layers_list=", ".join(self.layers_list), data_processing=self.load_csv(), model_creation=model, 
-            model_compilation=self.model_compilation(), model_fitting=self.model_fitting()
+            model_compilation=self.model_compilation(), model_fitting=self.model_fitting(), parse_args=self.parse_args()
         )
