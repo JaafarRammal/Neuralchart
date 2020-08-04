@@ -7,7 +7,7 @@
 			"type": "Input",
 			"params": {
 				"data_type": "Image",
-				"dimensions": [26, 26, 26]
+				"dimensions": [26, 26]
 			}
 		},
 		{
@@ -16,7 +16,7 @@
 		}, {
 			"type": "Fully Connected Layer",
 			"params": {
-				"units": 5.0,
+				"units": 10,
 				"activation": "ReLU",
 				"use_bias": true
 			}
