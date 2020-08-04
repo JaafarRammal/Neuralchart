@@ -37,11 +37,13 @@
     </div>
   </div>
   <!-- Drawing area -->
-  <div class="col-7 dashboard text-center">
-    <b>NN Dashboard</b>
-    <div style="height: 40px;"></div>
-    <div *ngIf="this.tree.length == 0"><i>Start by adding a node</i></div>
-    <div (click)="addCard(0)" class="setter" [ngStyle]="{'background-color': selecting ? '#ccccff' : 'white'}" style="width: 260px;"></div>
+  <div class="col-7 dashboard text-left">
+    <div class="text-center" style="width: 100%;">
+      <b>NN Dashboard</b>
+      <div style="height: 40px;"></div>
+      <div *ngIf="this.tree.length == 0"><i>Start by adding a node</i></div>
+    </div>
+    <i (click)="addCard(0)" class="setter text-right fa fa-arrow-left" [ngStyle]="{'color': selecting ? '#ccccff' : 'white'}" style="width: 300px;"></i>
     <div *ngFor="let card of tree; index as i;" style="width: 300px;">
       <app-card
         [title]="card.title"
@@ -49,7 +51,7 @@
         [selected]="card.selected"
         (click)="setCard(i)"
       ></app-card>
-      <div (click)="addCard(i+1)" class="setter" [ngStyle]="{'background-color': selecting ? '#ccccff' : 'white'}"></div>
+      <i (click)="addCard(i+1)" class="setter text-right fa fa-arrow-left" [ngStyle]="{'color': selecting ? '#ccccff' : 'white'}"></i>
     </div>
     <!-- <input type="file" (change)="this.file=$event.target.files"> -->
   </div>
@@ -57,7 +59,7 @@
   <div class="col-3 settings text-center">
     <b>Node parameters</b>
     <div style="height: 20px;"></div>
-    <div *ngIf="this.index == -1"><i>Please select a node</i></div>
+    <div *ngIf="this.index == -1"><i>Select a node to edit</i></div>
     <div *ngIf="this.index != -1" style="padding: 10px">
       <div class="row">
         <div class="col-lg-6 text-left"><b>Selected node:</b></div>

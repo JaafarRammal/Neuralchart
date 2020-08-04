@@ -26,5 +26,89 @@
         "value": 0
       }
     ]
+  },
+  {
+    "type": "Third type",
+    "description": "Node action",
+    "params": [
+      {
+        "title": "Some parameter",
+        "value": 0
+      },
+      {
+        "title": "Another parameter",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "type": "Fourth",
+    "description": "Node action",
+    "params": [
+      {
+        "title": "Some parameter",
+        "value": 0
+      },
+      {
+        "title": "Another parameter",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "type": "Add as many types",
+    "description": "Node action",
+    "params": [
+      {
+        "title": "Some parameter",
+        "value": 0
+      },
+      {
+        "title": "Another parameter",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "type": "From types.json",
+    "description": "Node action",
+    "params": [
+      {
+        "title": "Some parameter",
+        "value": 0
+      },
+      {
+        "title": "Another parameter",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "type": "Cool!",
+    "description": "Node action",
+    "params": [
+      {
+        "title": "Some parameter",
+        "value": 0
+      },
+      {
+        "title": "Another parameter",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "type": "Scrolls as well",
+    "description": "Node action",
+    "params": [
+      {
+        "title": "Some parameter",
+        "value": 0
+      },
+      {
+        "title": "Another parameter",
+        "value": 0
+      }
+    ]
   }
 ]

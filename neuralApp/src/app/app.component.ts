@@ -17,66 +17,8 @@ export class AppComponent implements OnInit {
   template: number = -1// selected template from blocks selection
   link = null
 
-  // tree example
-  tree: Card[] = [
-    {
-      title: "test",
-      description: "Hey",
-      selected: false,
-      params: [
-        {
-          title: "param1",
-          value: 3.4
-        },
-        {
-          title: "param2",
-          value: 2.7
-        },
-        {
-          title: "param3",
-          value: 1.2
-        }
-      ]
-    },
-    {
-      title: "test2",
-      description: "Nops",
-      selected: false,
-      params: [
-        {
-          title: "param1",
-          value: -1.2
-        },
-        {
-          title: "param3",
-          value: 2.7
-        },
-        {
-          title: "param9",
-          value: 1.2
-        }
-      ]
-    },
-    {
-      title: "test3",
-      description: "Nops",
-      selected: false,
-      params: [
-        {
-          title: "param1",
-          value: -1.2
-        },
-        {
-          title: "param3",
-          value: 2.7
-        },
-        {
-          title: "param9",
-          value: 1.2
-        }
-      ]
-    }
-  ]
+  // tree
+  tree: Card[] = []
 
   constructor(private sanitizer: DomSanitizer){
     this.clearCard()
@@ -124,7 +66,7 @@ export class AppComponent implements OnInit {
   deleteCard(){
     if (this.index > -1) {
       this.tree.splice(this.index, 1);
-      this.index = -1
+      this.clearCard()
     }
   }
 
