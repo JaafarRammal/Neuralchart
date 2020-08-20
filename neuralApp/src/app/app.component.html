@@ -1,0 +1,80 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#"><img src="../assets/tenserflow.png">NeuralChart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
+    <div class="navbar-nav text-center">
+      <a class="nav-item nav-link" href="#" (click)="openConfig()">Open</a>
+      <a class="nav-item nav-link" [href]="link" download="download.json" (click)="saveConfig()">Save</a>
+      <a class="nav-item nav-link" href="#" (click)="generatePython()">Generate</a>
+      <a class="nav-item nav-link" href="help">Help</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ARM disclaimer -->
+<div class="arm-disclaimer">
+  Project built as part of the ARM <i>"We, not I"</i> hackathon, summer 2020
+</div>
+
+<!-- Main dashboard -->
+<div class="main-container row">
+  <!-- Node types -->
+  <div class="col-2 tools text-center">
+    <b>Select a block</b>
+    <div style="height: 20px;"></div>
+    <div *ngFor="let type of types; index as i;" style="padding-top: 20px;">
+      <app-card
+        [title]="type.type"
+        [description]="type.description"
+        [selected]="i == template"
+        (click)="clearCard(); selecting=true; template=i;"
+      ></app-card>
+    </div>
+  </div>
+  <!-- Drawing area -->
+  <div class="col-7 dashboard text-left">
+    <div class="text-center" style="width: 100%;">
+      <b>NN Dashboard</b>
+      <div style="height: 40px;"></div>
+      <div *ngIf="this.tree.length == 0"><i>Start by adding a node</i></div>
+    </div>
+    <i (click)="addCard(0)" class="setter text-right fa fa-arrow-left" [ngStyle]="{'color': selecting ? '#ccccff' : 'white'}" style="width: 300px;"></i>
+    <div *ngFor="let card of tree; index as i;" style="width: 300px;">
+      <app-card
+        [title]="card.title"
+        [description]="card.description"
+        [selected]="card.selected"
+        (click)="setCard(i)"
+      ></app-card>
+      <i (click)="addCard(i+1)" class="setter text-right fa fa-arrow-left" [ngStyle]="{'color': selecting ? '#ccccff' : 'white'}"></i>
+    </div>
+    <!-- <input type="file" (change)="this.file=$event.target.files"> -->
+  </div>
+  <!-- Params -->
+  <div class="col-3 settings text-center">
+    <b>Node parameters</b>
+    <div style="height: 20px;"></div>
+    <div *ngIf="this.index == -1"><i>Select a node to edit</i></div>
+    <div *ngIf="this.index != -1" style="padding: 10px">
+      <div class="row">
+        <div class="col-lg-6 text-left"><b>Selected node:</b></div>
+        <div class="col-lg-6 text-right">{{tree[index].title}}</div>
+      </div>
+      <div *ngFor="let param of tree[index].params; index as i;" class="text-left" style="padding-top: 20px;">
+        <label for="input">{{param.title}}</label>
+        <input type="text" class="form-control" id="input" placeholder="Enter value" (keyup)="this.tree[index].params[i].value=$event.target.value" [value]="param.value">
+      </div>
+      <div class="row">
+        <div class="col-lg-6 text-left"><div class="text-left" style="padding-top: 20px;"><a href="#" (click)="deleteCard()" style="color: red;">Remove</a></div></div>
+        <div class="col-lg-6 text-right"><div class="text-right" style="padding-top: 20px;"><a href="#" (click)="clearCard()">Done</a></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->

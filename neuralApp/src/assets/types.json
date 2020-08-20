@@ -1,0 +1,71 @@
+[
+  {
+    "type": "Flatten",
+    "description": "",
+    "params": []
+  },
+  {
+    "type": "Fully Connected",
+    "description": "",
+    "params": [
+      {
+        "title": "Units",
+        "value": "0"
+      },
+      {
+        "title": "Activation",
+        "value": "Active"
+      },
+      {
+        "title": "Use-bias",
+        "value": "True"
+      }
+    ]
+  },
+  {
+    "type": "2D convolution",
+    "description": "",
+    "params": [
+      {
+        "title": "Fitters",
+        "value": "0"
+      },
+      {
+        "title": "Kernel_x",
+        "value": "0"
+      },
+      {
+        "title": "Kernel_y",
+        "value": "0"
+      },
+      {
+        "title": "Activation",
+        "value": "Active"
+      }
+    ]
+  },
+  {
+    "type": "2D Max pooling",
+    "description": "",
+    "params": [
+      {
+        "title": "Pool_x",
+        "value": "0"
+      },
+      {
+        "title": "Pool_y",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "type": "Dropout",
+    "description": "",
+    "params": [
+      {
+        "title": "Dropout",
+        "value": "0.0"
+      }
+    ]
+  }
+]
